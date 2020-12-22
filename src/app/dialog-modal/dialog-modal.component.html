@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>
+    <img src='{{ "../assets/" + data.pet.ImageSrc + ".png" }}' alt="Photo of pet" class="image-dialog">{{data.pet.Name}}
+</h1>
+<div mat-dialog-content>
+    <h3>{{data.pet.Name}} is a {{data.pet.SpecieName}} and has {{data.pet.Age}} years old.</h3>
+    <p>{{data.pet.Description}}</p>
+  <mat-form-field>
+    <mat-label>Vaccines</mat-label>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <button class="float-button-dialog" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="loadVaccines(data.pet)">
+    <mat-icon>cached</mat-icon>
+  </button>
+  <mat-list>
+    <div mat-subheader>Vaccines</div>
+    <mat-list-item *ngFor="let folder of data.vaccines3">
+      <mat-icon mat-list-icon>health_and_safety</mat-icon>
+      <div mat-line>{{folder.Name}}</div>
+      <div mat-line> {{folder.RecordNumber}} </div>
+      <div mat-line>
+        <mat-chip-list>
+          <mat-chip color="accent" *ngFor="let tag of folder.Tags">{{tag}}</mat-chip>
+          <mat-chip color="primary" selected>{{data.pet.Name}}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+  <mat-selection-list #vaccines2>
+    <mat-list-option *ngFor="let vaccine of data.vaccines3">
+      {{ vaccine.Name }}
+    </mat-list-option>
+  </mat-selection-list>
+  <p>
+    Options selected: {{vaccines2.selectedOptions.selected.length}}
+  </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial>CLOSE</button>
+  <button mat-button (click)="save(data.pet)">SAVE</button>
+</div>

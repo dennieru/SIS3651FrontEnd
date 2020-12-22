@@ -1,0 +1,35 @@
+.user-round{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 100px 10px 0 0;
+    border: solid 2px #ffd740;
+    cursor: pointer;
+}
+.user-text{
+    margin-top: 100px;
+}
+
+.img-summary {
+    width: 30px;
+    height: 30px;
+}
+.md-fab-bottom-right{
+    position: fixed !important;
+    right: 25px; 
+    bottom: 25px;
+}
+
+.img-card-sticky {
+    top: 5px;
+    right: 15px;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 50%;
+    border: solid 5px #ffd740;
+  }
