@@ -1,0 +1,14 @@
+<mat-selection-list #vaccines2 [multiple]="false">
+    <mat-list-option *ngFor="let vaccine of vaccines2" [value]="vaccine.Name">
+      {{ vaccine.Name }}
+    </mat-list-option>
+  </mat-selection-list>
+  
+  <p>
+    Option selected: {{vaccines2.selectedOptions.selected[0]?.value}}
+  </p>
+  
+  
+  <!-- Copyright 2020 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
