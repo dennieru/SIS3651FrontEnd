@@ -3,6 +3,7 @@ import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
+import { UserModalComponent } from './user-modal/user-modal.component';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -22,24 +23,31 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    var userName = 'Daniel';
+    var userName = 'developer_fullstack';
     this.dataService.sendGetRequest('owner/?name='+userName).subscribe((data: any[])=>{
       console.log(data);
       this.user = data;
     })
-    this.dataService.sendGetRequest('pet').subscribe((data: any[])=>{
+    this.dataService.sendGetRequest('pet/?nickName='+userName).subscribe((data: any[])=>{
       console.log(data);
       this.pets = data;
     })
   }
   
+  
+  
+  openUserDialog(): void {
+    this.dialog.open(UserModalComponent, {
+      width: '450px',
+      data: {
+      }
+    });
+  }
+
   openDialog(petChoosed): void {
     
     this.dataService.sendGetRequest('vaccine/?name='+petChoosed.Name).subscribe((data: any[])=>{
-      console.log('aa');
-      console.log(data);
       this.vaccines3 = data;
-      console.log('bb');
       console.log(this.vaccines3);
     })
     let dialogRef = this.dialog.open(DialogModalComponent, {

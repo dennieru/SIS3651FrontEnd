@@ -13,4 +13,9 @@ export class DataService {
   public sendGetRequest(apiCall = ''){
     return this.httpClient.get(this.REST_API_SERVER + apiCall);
   }
+
+  public sendPostRequest(apiFromBody: any, apiCall = ''){
+      console.log("res0");
+    return this.httpClient.post(this.REST_API_SERVER + apiCall, apiFromBody);
+  }
 }

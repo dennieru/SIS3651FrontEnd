@@ -33,3 +33,7 @@
     border-radius: 50%;
     border: solid 5px #ffd740;
   }
+  .cien-width{
+    width: 100% !important;
+  }
+  

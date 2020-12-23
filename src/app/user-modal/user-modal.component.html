@@ -1,0 +1,59 @@
+<mat-card-header>
+    <div mat-card-avatar class="example-header-image"><img style="width: 50px;" src='{{ "../assets/" + specie + "-icon.png" }}'/></div>
+    <mat-card-title style="margin-top: 18px;">Add new pet</mat-card-title>
+</mat-card-header>
+<!--img class="pet-modal-image-sticky" src='../assets/puppy-icon.png'/-->
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+<h3>Fill all fields below:</h3>
+<div class="example-container">
+  <mat-form-field appearance="fill" class="cien-width">
+    <mat-label>Owner name</mat-label>
+    <input matInput [(value)]="owner" disabled>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="cien-width">
+    <mat-label>Pet name</mat-label>
+    <input matInput [(value)]="name">
+  </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="cien-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(value)]="description"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Birth date</mat-label>
+        <input matInput [matDatepicker]="picker" [value]="date.value">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="cien-width">
+      <mat-label>Specie</mat-label>
+      <mat-select [(value)]="specie">
+        <mat-option value="cat">Cat</mat-option>
+        <mat-option value="bird">Bird</mat-option>
+        <mat-option value="chicken">Chicken</mat-option>
+        <mat-option value="dog">Dog</mat-option>
+        <mat-option value="donkey">Donkey</mat-option>
+        <mat-option value="duck">Duck</mat-option>
+        <mat-option value="fish">Fish</mat-option>
+        <mat-option value="frog">Frog</mat-option>
+        <mat-option value="hamster">Hamster</mat-option>
+        <mat-option value="horse">Horse</mat-option>
+        <mat-option value="mouse">Mouse</mat-option>
+        <mat-option value="parrot">Parrot</mat-option>
+        <mat-option value="pig">Pig</mat-option>
+        <mat-option value="pony">Pony</mat-option>
+        <mat-option value="rabbit">Rabbit</mat-option>
+        <mat-option value="sheep">Sheep</mat-option>
+        <mat-option value="squirrel">Squirrel</mat-option>
+        <mat-option value="turtle">Turtle</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+<button mat-button mat-dialog-close>CANCEL</button>
+<button mat-button [mat-dialog-close]="true" mat-flat-button color="primary" cdkFocusInitial (click)="save()">SAVE</button>
+</mat-dialog-actions>

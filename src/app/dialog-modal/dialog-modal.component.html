@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-    <img src='{{ "../assets/" + data.pet.ImageSrc + ".png" }}' alt="Photo of pet" class="image-dialog">{{data.pet.Name}}
+    <img src='{{ "../assets/" + data.pet.SpecieName + "-icon.png" }}' alt="Photo of pet" class="image-dialog">{{data.pet.Name}}
 </h1>
 <div mat-dialog-content>
     <h3>{{data.pet.Name}} is a {{data.pet.SpecieName}} and has {{data.pet.Age}} years old.</h3>
@@ -13,26 +13,40 @@
   </button>
   <mat-list>
     <div mat-subheader>Vaccines</div>
-    <mat-list-item *ngFor="let folder of data.vaccines3">
-      <mat-icon mat-list-icon>health_and_safety</mat-icon>
-      <div mat-line>{{folder.Name}}</div>
-      <div mat-line> {{folder.RecordNumber}} </div>
-      <div mat-line>
-        <mat-chip-list>
-          <mat-chip color="accent" *ngFor="let tag of folder.Tags">{{tag}}</mat-chip>
-          <mat-chip color="primary" selected>{{data.pet.Name}}</mat-chip>
-        </mat-chip-list>
-      </div>
-    </mat-list-item>
+    <ng-container *ngFor="let folder of data.vaccines3">
+      <mat-list-item>
+        <mat-icon mat-list-icon>health_and_safety</mat-icon>
+        <div mat-line>{{folder.Name}}</div>
+        <div mat-line>
+          <mat-chip-list>
+              <ng-container *ngIf="folder.Type=='annual'">
+                <mat-chip class="fake-primary" selected *ngFor="let tago of folder.Tags">{{tago}}</mat-chip>
+              </ng-container>
+              <ng-container *ngIf="folder.Type!='annual'">
+                <mat-chip color="accent" *ngFor="let tag of folder.Tags">{{tag}}</mat-chip>
+              </ng-container>
+          </mat-chip-list>
+        </div>
+      </mat-list-item>
+      <mat-list style="margin-left:30px;">
+        <div *ngFor="let subItem of folder.Vaccines">
+            <mat-list-item>{{ subItem.Name }} - {{ subItem.Description }}</mat-list-item>
+        </div>
+      </mat-list>
+    </ng-container>
     <mat-divider></mat-divider>
   </mat-list>
+  <div mat-subheader>Register Vaccine</div>
   <mat-selection-list #vaccines2>
     <mat-list-option *ngFor="let vaccine of data.vaccines3">
-      {{ vaccine.Name }}
+      {{ vaccine.Name }} - 
+      <ng-container *ngFor="let subItem of vaccine.Vaccines">
+        {{ subItem.Name }}<b> &nbsp;&nbsp;{{ subItem.Cost }}$</b>
+      </ng-container>
     </mat-list-option>
   </mat-selection-list>
   <p>
-    Options selected: {{vaccines2.selectedOptions.selected.length}}
+    Vaccines to register: {{vaccines2.selectedOptions.selected.length}}
   </p>
 </div>
 <div mat-dialog-actions>

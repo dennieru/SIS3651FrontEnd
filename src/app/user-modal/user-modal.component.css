@@ -1,0 +1,7 @@
+.example-header-image {
+    /*background-image: url('../../assets/puppy-icon.png');*/
+    background-size: cover;
+  }
+  .mat-form-field{
+    width:400px !important;
+  }
