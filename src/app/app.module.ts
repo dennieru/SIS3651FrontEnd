@@ -50,12 +50,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListSingleSelectionComponent } from './list-single-selection/list-single-selection.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
+import { UserModalComponent } from './user-modal/user-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListSingleSelectionComponent,
     DialogModalComponent,
+    UserModalComponent,
   ],
   imports: [
     A11yModule,

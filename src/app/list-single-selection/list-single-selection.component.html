@@ -1,6 +1,6 @@
 <mat-selection-list #vaccines2 [multiple]="false">
     <mat-list-option *ngFor="let vaccine of vaccines2" [value]="vaccine.Name">
-      {{ vaccine.Name }}
+      {{ vaccine.Name }} - {{ vaccine.Type }}
     </mat-list-option>
   </mat-selection-list>
   
